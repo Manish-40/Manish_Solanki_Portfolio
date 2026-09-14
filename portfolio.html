@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manish Solanki — Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Manish Solanki, a full-stack web developer in Mumbai building real, working products across the MERN stack and SQL/NoSQL databases.">
+<meta name="theme-color" content="#14151B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14151B;
+  --ink-2:#1B1D26;
+  --paper:#F3EEE3;
+  --paper-ink:#221F1A;
+  --marigold:#E8A33D;
+  --mist:#9AA0AC;
+  --line:rgba(255,255,255,.12);
+  --line-soft:rgba(255,255,255,.07);
+  --maxw:1080px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+body{background:var(--ink);color:var(--paper);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Big Shoulders Display',sans-serif;line-height:1;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+:focus-visible{outline:2px solid var(--marigold);outline-offset:3px;}
+.rule{width:40px;height:3px;background:var(--marigold);border:0;margin-bottom:1.4rem;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(20,21,27,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft);}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-name{font-family:'Big Shoulders Display';font-size:1.15rem;font-weight:700;}
+.nav-links{display:flex;gap:1.8rem;}
+.nav-links a{font-size:.9rem;color:var(--mist);padding:4px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s;}
+.nav-links a:hover,.nav-links a.active{color:var(--paper);border-color:var(--marigold);}
+.nav-toggle{display:none;background:none;border:0;color:var(--paper);font-size:1.4rem;cursor:pointer;}
+@media(max-width:780px){
+  .nav-links{position:fixed;top:64px;left:0;right:0;background:var(--ink-2);flex-direction:column;padding:1.4rem 28px;gap:1.1rem;border-bottom:1px solid var(--line-soft);transform:translateY(-130%);transition:transform .25s ease;}
+  .nav-links.open{transform:translateY(0);}
+  .nav-toggle{display:block;}
+}
+
+/* HERO */
+.hero{padding:9rem 0 5rem;}
+.hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3.5rem;align-items:start;}
+.kicker{color:var(--mist);font-size:.95rem;margin-bottom:.6rem;}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.2rem);font-weight:800;margin-bottom:1.2rem;}
+.hero .lead{color:var(--mist);max-width:46ch;margin-bottom:2rem;font-size:1.05rem;}
+.cta-row{display:flex;align-items:center;flex-wrap:wrap;gap:1.4rem;}
+.btn{display:inline-block;padding:.8rem 1.5rem;border-radius:6px;font-weight:600;font-size:.92rem;transition:opacity .15s,border-color .15s,color .15s;}
+.btn-solid{background:var(--marigold);color:#221a08;}
+.btn-solid:hover{opacity:.88;}
+.btn-outline{border:1px solid var(--line);color:var(--paper);}
+.btn-outline:hover{border-color:var(--marigold);color:var(--marigold);}
+.text-link{font-size:.92rem;color:var(--mist);text-decoration:underline;text-underline-offset:3px;}
+.text-link:hover{color:var(--marigold);}
+
+.board{background:var(--ink-2);border-top:3px solid var(--marigold);border-radius:4px;overflow:hidden;}
+.board-row{display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.3rem;border-bottom:1px solid var(--line-soft);}
+.board-row:last-child{border-bottom:none;}
+.board-label{color:var(--mist);font-size:.85rem;padding-top:.15rem;}
+.board-value{font-family:'IBM Plex Mono',monospace;font-size:.92rem;text-align:right;}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--marigold);margin-right:.5em;}
+.flip{display:inline-block;opacity:0;transform:translateY(6px);animation:flipin .5s ease forwards;}
+@keyframes flipin{to{opacity:1;transform:translateY(0);}}
+@media(prefers-reduced-motion:reduce){.flip{animation:none;opacity:1;transform:none;}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+
+/* SECTIONS */
+.section{padding:5rem 0;scroll-margin-top:64px;}
+.section.alt{background:var(--ink-2);}
+.section h2{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:.3rem;}
+.section-head{margin-bottom:2.2rem;}
+.section p.intro{color:var(--mist);max-width:60ch;margin-top:.6rem;}
+
+/* ABOUT */
+.about p{max-width:64ch;color:var(--paper);font-size:1.02rem;margin-bottom:1rem;}
+.about p:last-child{margin-bottom:0;}
+
+/* SKILLS */
+.manifest{border-top:1px solid var(--line);}
+.manifest-row{display:flex;gap:2rem;padding:1.1rem 0;border-bottom:1px solid var(--line);}
+.manifest-label{width:150px;flex-shrink:0;color:var(--mist);font-size:.9rem;padding-top:.35rem;}
+.manifest-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+.chip{border:1px solid var(--line);padding:.35rem .8rem;border-radius:5px;font-size:.85rem;color:var(--paper);}
+@media(max-width:600px){.manifest-row{flex-direction:column;gap:.6rem;}.manifest-label{width:auto;}}
+
+/* PROJECTS */
+.tickets{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.8rem;}
+.ticket{background:var(--paper);color:var(--paper-ink);border-radius:8px;padding:1.7rem;position:relative;overflow:hidden;}
+.ticket h3{font-size:1.4rem;margin-bottom:.6rem;}
+.ticket .desc{font-size:.92rem;color:#4a453c;margin-bottom:1rem;}
+.ticket ul li{font-size:.87rem;color:#3a352c;padding-left:1rem;position:relative;margin-bottom:.45rem;}
+.ticket ul li::before{content:'–';position:absolute;left:0;color:#8a5a10;}
+.tear{border-top:2px dashed rgba(34,31,26,.28);margin:1.3rem -1.7rem;position:relative;}
+.tear::before,.tear::after{content:'';position:absolute;top:-9px;width:18px;height:18px;border-radius:50%;background:var(--ink);}
+.tear::before{left:-9px;}
+.tear::after{right:-9px;}
+.stub{display:flex;flex-wrap:wrap;gap:.5rem;}
+.stub .chip{border-color:rgba(34,31,26,.18);color:#4a453c;font-size:.78rem;padding:.3rem .65rem;}
+
+/* TIMELINE */
+.timeline{border-left:2px solid var(--line);margin-left:4px;padding-left:1.8rem;}
+.tl-item{position:relative;padding-bottom:2.2rem;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:-2.05rem;top:.3rem;width:10px;height:10px;border-radius:50%;background:var(--marigold);}
+.tl-date{font-family:'IBM Plex Mono';font-size:.82rem;color:var(--marigold);margin-bottom:.3rem;}
+.tl-item h3{font-size:1.15rem;margin-bottom:.2rem;font-weight:700;}
+.tl-item p{color:var(--mist);font-size:.92rem;}
+
+/* CONTACT */
+.contact-list{border-top:1px solid var(--line);max-width:520px;}
+.contact-row{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;border-bottom:1px solid var(--line);gap:1rem;flex-wrap:wrap;}
+.contact-row .label{color:var(--mist);font-size:.9rem;}
+.contact-row .value{font-size:.95rem;text-align:right;word-break:break-word;}
+.contact-row a.value:hover{color:var(--marigold);}
+
+footer{padding:2.4rem 0;border-top:1px solid var(--line-soft);color:var(--mist);font-size:.85rem;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-row">
+    <span class="nav-name">Manish Solanki</span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">Full-stack developer based in Mumbai.</p>
+      <h1>Manish<br>Solanki</h1>
+      <p class="lead">I build complete, working products, not demos: the sign-ups, feeds, bookings, and payments people rely on every day.</p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-solid">View projects</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+        <!-- <a href="Manish_Solanki_Resume_2026.pdf" download class="text-link">Download résumé</a> -->
+      </div>
+    </div>
+    <div class="board" role="group" aria-label="Quick facts">
+      <div class="board-row"><span class="board-label">Role</span><span class="board-value flip" style="animation-delay:.1s">Full-Stack Developer</span></div>
+      <div class="board-row"><span class="board-label">Based</span><span class="board-value flip" style="animation-delay:.25s">Mumbai, India</span></div>
+      <div class="board-row"><span class="board-label">Stack</span><span class="board-value flip" style="animation-delay:.4s">MERN + SQL</span></div>
+      <div class="board-row"><span class="board-label">Status</span><span class="board-value flip" style="animation-delay:.55s"><span class="dot"></span>Open to roles</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section about" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>About</h2>
+      </div>
+      <p>I'm finishing a B.E. in Information Technology at Atharva College of Engineering, after a Diploma in Computer Engineering where I scored 87.6%. Alongside coursework, I've built three full projects on my own initiative: a social platform, a rental marketplace, and a live ticket-booking system, each one taken from a blank repo through to a working product with real authentication, real data, and real edge cases.</p>
+      <p>I'm most interested in the parts of an app that don't show up in a demo video: how the data is modelled, how the API is shaped, and whether the whole thing still works when someone uses it in a way you didn't plan for.</p>
+    </div>
+  </section>
+
+  <section class="section alt" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>Skills</h2>
+      </div>
+      <div class="manifest">
+        <div class="manifest-row">
+          <span class="manifest-label">Languages</span>
+          <div class="manifest-tags"><span class="chip">C</span><span class="chip">C++</span><span class="chip">JavaScript</span></div>
+        </div>
+        <div class="manifest-row">
+          <span class="manifest-label">Web development</span>
+          <div class="manifest-tags"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">React.js</span><span class="chip">Node.js</span><span class="chip">Express.js</span></div>
+        </div>
+        <div class="manifest-row">
+          <span class="manifest-label">Databases</span>
+          <div class="manifest-tags"><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span></div>
+        </div>
+        <div class="manifest-row">
+          <span class="manifest-label">Tools</span>
+          <div class="manifest-tags"><span class="chip">Git</span><span class="chip">GitHub</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>Projects</h2>
+      </div>
+      <div class="tickets">
+
+        <article class="ticket">
+          <h3>PeoplePost</h3>
+          <p class="desc">A full-stack social networking platform for posts, profiles, and connections.</p>
+          <ul>
+            <li>Connection requests, real-time user search, and one-to-one chat</li>
+            <li>Secure authentication and authorization</li>
+            <li>Dynamic feed with image uploads, likes, comments, and views</li>
+          </ul>
+          <div class="tear"></div>
+          <div class="stub">
+            <span class="chip">React.js</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MongoDB</span>
+          </div>
+        </article>
+
+        <article class="ticket">
+          <h3>Find-Mate</h3>
+          <p class="desc">A rental marketplace matching tenants with flats and flatmates within budget.</p>
+          <ul>
+            <li>Owners can list, edit, or remove their own properties</li>
+            <li>Separate filters for finding flats and for finding flatmates</li>
+          </ul>
+          <div class="tear"></div>
+          <div class="stub">
+            <span class="chip">React.js</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MongoDB</span>
+          </div>
+        </article>
+
+        <article class="ticket">
+          <h3>Antra Music</h3>
+          <p class="desc">A concert ticket booking platform built with a four-member team. Won 2nd Prize at the Diploma Final Year Project Presentation.</p>
+          <ul>
+            <li>JWT authentication with real-time seat selection and booking</li>
+            <li>Payment screenshot uploads handled with Multer</li>
+            <li>Admin dashboard to add and manage concert shows</li>
+          </ul>
+          <div class="tear"></div>
+          <div class="stub">
+            <span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">PostgreSQL</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>Education</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">Aug 2024 — Present</div>
+          <h3>B.E., Information Technology</h3>
+          <p>Atharva College of Engineering</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Oct 2021 — May 2024</div>
+          <h3>Diploma, Computer Engineering</h3>
+          <p>Pravin Patil College of Diploma Engineering and Technology — 87.60%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="rule"></div>
+        <h2>Contact</h2>
+        <p class="intro">Reach out directly. I reply quickly.</p>
+      </div>
+      <div class="contact-list">
+        <div class="contact-row"><span class="label">Email</span><a class="value" href="mailto:manishsolanki090406@gmail.com">manishsolanki090406@gmail.com</a></div>
+        <div class="contact-row"><span class="label">Phone</span><a class="value" href="tel:+919987796792">+91 99877 96792</a></div>
+        <div class="contact-row"><span class="label">LinkedIn</span><a class="value" href="https://www.linkedin.com/in/manish-solanki-867140268" target="_blank" rel="noopener">manish-solanki</a></div>
+        <div class="contact-row"><span class="label">GitHub</span><a class="value" href="https://github.com/Manish-40" target="_blank" rel="noopener">Manish-40</a></div>
+        <div class="contact-row"><span class="label">Location</span><span class="value">Mumbai, Maharashtra</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Manish Solanki</div>
+</footer>
+
+<script>
+  const navToggle=document.getElementById('navToggle');
+  const navLinks=document.getElementById('navLinks');
+  navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+  const sections=document.querySelectorAll('main .section');
+  const navA=document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll',()=>{
+    let current='';
+    sections.forEach(sec=>{ if(window.scrollY>=sec.offsetTop-120) current=sec.id; });
+    navA.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+current));
+  });
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
